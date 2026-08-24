@@ -1,0 +1,9 @@
+[
+  { "tipo": "etiqueta", "color": "bg-orange-500", "lado": "derecha" },
+  { "tipo": "carrusel", "color": "bg-indigo-800", "corte": "inicio", "piezas": 4 },
+  { "tipo": "etiqueta", "color": "bg-indigo-800", "lado": "izquierda" },
+  { "tipo": "carrusel", "color": "bg-red-500", "corte": "fin", "piezas": 5 },
+  { "tipo": "etiqueta", "color": "bg-red-500", "lado": "derecha" },
+  { "tipo": "carrusel", "color": "bg-emerald-600", "corte": "fin", "piezas": 6 },
+  { "tipo": "etiqueta", "color": "bg-emerald-600", "lado": "izquierda" }
+]
