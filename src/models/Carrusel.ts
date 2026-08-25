@@ -1,9 +1,10 @@
-import { bloqueCarrusel } from "./bloqueCarrusel";
+import type { bloqueCarrusel } from './BloqueCarrusel'
 
-export interface Carruse{
-    id: number;
-    titulo: string;
-    direccion: "izq" | "der";
-    listabloques: bloqueCarrusel[];
+export interface Carrusel {
+  id: number
+  titulo: string
+  listabloques: bloqueCarrusel[]
+  tamaño: string
+  /** Color del titulo. Si se omite, toma el del primer bloque. */
+  color?: string
 }
-

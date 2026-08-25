@@ -4,4 +4,6 @@ export interface bloqueCarrusel {
   image: string;
   descripcion_hover: string;
   imagen_hover: string;
+  color: string;
+  largo_bloques: number;
 }

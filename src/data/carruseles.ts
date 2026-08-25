@@ -1,0 +1,161 @@
+import type { Carrusel } from '../models/Carrusel'
+
+/**
+ * Datos de prueba: 3 carruseles.
+ *
+ * `tamaño` define en cuantas columnas se parte la fila, asi que decide que tan
+ * grandes se ven las piezas. `largo_bloques` de cada bloque es relativo a esa
+ * cuadricula: si los largos suman mas que las columnas, la fila hace scroll.
+ */
+export const carruseles: Carrusel[] = [
+  {
+    id: 1,
+    titulo: 'Comunicación',
+    color: '#7c4dff',
+    tamaño: 'mediano',
+    listabloques: [
+      {
+        id: 11,
+        titulo: 'Estrategia',
+        image: '',
+        descripcion_hover: 'Plan de medios y vocería.',
+        imagen_hover: '',
+        color: '#3b1d9e',
+        largo_bloques: 1,
+      },
+      {
+        id: 12,
+        titulo: 'Campañas',
+        image: '',
+        descripcion_hover: 'Pieza de dos bloques de largo.',
+        imagen_hover: '',
+        color: '#4713c4',
+        largo_bloques: 2,
+      },
+      {
+        id: 13,
+        titulo: 'Prensa',
+        image: '',
+        descripcion_hover: '',
+        imagen_hover: '',
+        color: '#2f0f8c',
+        largo_bloques: 1,
+      },
+      {
+        id: 14,
+        titulo: 'Redes',
+        image: '',
+        descripcion_hover: 'Cierra la fila justo al ras.',
+        imagen_hover: '',
+        color: '#5a2ae0',
+        largo_bloques: 2,
+      },
+    ],
+  },
+  {
+    id: 2,
+    titulo: 'Edición de video',
+    color: '#ff3b30',
+    tamaño: 'grande',
+    listabloques: [
+      {
+        id: 21,
+        titulo: 'Documental',
+        image: '',
+        descripcion_hover: 'Formato largo.',
+        imagen_hover: '',
+        color: '#ff3b30',
+        largo_bloques: 1,
+      },
+      {
+        id: 22,
+        titulo: 'Spot',
+        image: '',
+        descripcion_hover: '',
+        imagen_hover: '',
+        color: '#d92b22',
+        largo_bloques: 1,
+      },
+      {
+        id: 23,
+        titulo: 'Motion',
+        image: '',
+        descripcion_hover: 'Animación y gráficos.',
+        imagen_hover: '',
+        color: '#ff5a4f',
+        largo_bloques: 1,
+      },
+      {
+        id: 24,
+        titulo: 'Cobertura',
+        image: '',
+        descripcion_hover: 'Esta fila se pasa a proposito: hace scroll.',
+        imagen_hover: '',
+        color: '#b81f18',
+        largo_bloques: 1,
+      },
+    ],
+  },
+  {
+    id: 3,
+    titulo: 'Marketing',
+    color: '#00c98d',
+    tamaño: 'chico',
+    listabloques: [
+      {
+        id: 31,
+        titulo: 'SEO',
+        image: '',
+        descripcion_hover: '',
+        imagen_hover: '',
+        color: '#00996b',
+        largo_bloques: 1,
+      },
+      {
+        id: 32,
+        titulo: 'Ads',
+        image: '',
+        descripcion_hover: 'Pauta y medición.',
+        imagen_hover: '',
+        color: '#00b37e',
+        largo_bloques: 1,
+      },
+      {
+        id: 33,
+        titulo: 'Contenido',
+        image: '',
+        descripcion_hover: 'Dos bloques.',
+        imagen_hover: '',
+        color: '#007a56',
+        largo_bloques: 2,
+      },
+      {
+        id: 34,
+        titulo: 'Email',
+        image: '',
+        descripcion_hover: '',
+        imagen_hover: '',
+        color: '#00c98d',
+        largo_bloques: 1,
+      },
+      {
+        id: 35,
+        titulo: 'CRM',
+        image: '',
+        descripcion_hover: '',
+        imagen_hover: '',
+        color: '#00664a',
+        largo_bloques: 1,
+      },
+      {
+        id: 36,
+        titulo: 'Analítica',
+        image: '',
+        descripcion_hover: 'Cierra los 8 bloques exactos.',
+        imagen_hover: '',
+        color: '#00a06f',
+        largo_bloques: 2,
+      },
+    ],
+  },
+]
