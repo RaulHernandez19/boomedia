@@ -37,7 +37,7 @@ export default function Carrusel({
       </ul>
 
       <h2
-        className={`mt-1 text-2xl font-extrabold tracking-tight ${
+        className={`mt-1 text-3xl font-black tracking-tighter ${
           lado === 'derecha' ? 'text-right' : 'text-left'
         }`}
         style={{ color }}

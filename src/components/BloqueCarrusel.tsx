@@ -1,4 +1,5 @@
 import type { bloqueCarrusel } from '../models/BloqueCarrusel'
+import placeholder from '../assets/placeholder.svg'
 
 /**
  * Una pieza del carrusel.
@@ -25,13 +26,11 @@ export default function BloqueCarrusel({ bloque }: { bloque: bloqueCarrusel }) {
         backgroundColor: bloque.color,
       }}
     >
-      {bloque.image && (
-        <img
-          src={bloque.image}
-          alt={bloque.titulo}
-          className="absolute inset-0 size-full object-cover"
-        />
-      )}
+      <img
+        src={bloque.image || placeholder}
+        alt=""
+        className="absolute inset-0 size-full object-cover"
+      />
 
       {bloque.imagen_hover && (
         <img

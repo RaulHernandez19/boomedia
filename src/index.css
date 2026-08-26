@@ -1,5 +1,20 @@
 @import 'tailwindcss';
 
+/**
+ * Paleta de marca. Al vivir en `@theme` sirve para las dos cosas:
+ * como utilidad de Tailwind (`bg-rojo`, `text-azul`) y como `var(--color-rojo)`
+ * dentro de los datos, asi los colores no se repiten en varios archivos.
+ */
+@theme {
+  --color-rojo: #ed1c24;
+  --color-rojo-oscuro: #c1121a;
+  --color-naranja: #f9a11b;
+  --color-naranja-oscuro: #d4830a;
+  --color-azul: #1e3a8f;
+  --color-azul-oscuro: #14275f;
+  --color-ilustracion: #d9d9d9;
+}
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -12,6 +27,9 @@
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  /* Ancho maximo del contenido. El fondo no lo usa: ese va a pantalla completa. */
+  --ancho-contenido: 1126px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -54,60 +72,73 @@
 
 body {
   margin: 0;
+  /* La pagina de marca siempre va sobre blanco: no sigue el modo oscuro del sistema. */
+  background: #fff;
+  color-scheme: light;
 }
 
+/*
+ * Dos anchos: `#root` va a pantalla completa y ahi vive el fondo, para que las
+ * imagenes de fondo no queden cortadas; el contenido se limita aparte con
+ * `--ancho-contenido`.
+ */
 #root {
-  width: 1126px;
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+/*
+ * Estos estilos base van dentro de `@layer base` a proposito: fuera de una capa
+ * le ganarian a cualquier utilidad de Tailwind sin importar la especificidad,
+ * y entonces clases como `font-black` o `text-white` no harian nada en un h2.
+ */
+@layer base {
+  h1,
+  h2 {
+    font-family: var(--heading);
+    font-weight: 500;
+    color: var(--text-h);
   }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+
+  h1 {
+    font-size: 56px;
+    letter-spacing: -1.68px;
+    margin: 32px 0;
+    @media (max-width: 1024px) {
+      font-size: 36px;
+      margin: 20px 0;
+    }
   }
-}
-p {
-  margin: 0;
-}
+  h2 {
+    font-size: 24px;
+    line-height: 118%;
+    letter-spacing: -0.24px;
+    margin: 0 0 8px;
+    @media (max-width: 1024px) {
+      font-size: 20px;
+    }
+  }
+  p {
+    margin: 0;
+  }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
+  code,
+  .counter {
+    font-family: var(--mono);
+    display: inline-flex;
+    border-radius: 4px;
+    color: var(--text-h);
+  }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  code {
+    font-size: 15px;
+    line-height: 135%;
+    padding: 4px 8px;
+    background: var(--code-bg);
+  }
 }
