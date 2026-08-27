@@ -1,8 +1,8 @@
 import type { BloqueIntro } from '../models/BloqueIntro'
 
 /**
- * Los dos bloques de arriba. Para poner imagenes reales basta con llenar
- * `imagenes` (una por columna) o `imagenFondo`; si se dejan vacios sale el placeholder.
+ * Los dos bloques de arriba. La imagen ocupa el recuadro completo; el alto real
+ * lo manda el `min-h-*` de SeccionIntro y `alto` solo sirve de minimo.
  */
 export const bloquesIntro: BloqueIntro[] = [
   {
@@ -12,6 +12,7 @@ export const bloquesIntro: BloqueIntro[] = [
     columnas: 1,
     centrado: true,
     alto: 300,
+    imagenes: ['/queSomos.jpeg'],
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const bloquesIntro: BloqueIntro[] = [
     columnas: 1,
     centrado: true,
     alto: 300,
+    imagenes: ['/queHacemos.jpeg'],
   },
 ]
 
