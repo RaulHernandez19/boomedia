@@ -3,7 +3,7 @@ export default function Marca({ logo }: { logo?: string }) {
   return (
     <header className="py-4">
       {logo ? (
-        <img src={logo} alt="BOOMedia" className="mx-auto h-32 object-contain" />
+        <img src={logo} alt="BOOMedia" className="mx-auto h-64 object-contain" />
       ) : (
         <p
           className="text-rojo text-6xl font-black tracking-tighter"

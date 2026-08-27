@@ -10,8 +10,8 @@ export default function App() {
     <div className="relative flex flex-1 flex-col overflow-hidden bg-white">
       <FondoIlustraciones />
 
-      <main className="relative mx-auto flex w-full max-w-[var(--ancho-contenido)] flex-1 flex-col gap-10 px-8 py-6">
-        <Marca />
+      <main className="relative mx-auto flex w-full max-w-[var(--ancho-contenido)] flex-1 flex-col gap-2 px-8 py-6">
+        <Marca logo="/boomedia_logo.png" />
         <SeccionIntro />
 
         <div className="flex flex-col gap-8">
