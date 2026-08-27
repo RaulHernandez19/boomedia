@@ -1,4 +1,3 @@
-import Marca from './components/Marca'
 import FondoIlustraciones from './components/FondoIlustraciones'
 import SeccionIntro from './components/SeccionIntro'
 import Carrusel from './components/Carrusel'
@@ -11,7 +10,6 @@ export default function App() {
       <FondoIlustraciones />
 
       <main className="relative mx-auto flex w-full max-w-[var(--ancho-contenido)] flex-1 flex-col gap-2 px-8 py-6">
-        <Marca logo="/boomedia_logo.png" />
         <SeccionIntro />
 
         <div className="flex flex-col gap-8">

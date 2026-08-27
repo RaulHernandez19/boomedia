@@ -9,7 +9,9 @@ export const bloquesIntro: BloqueIntro[] = [
     id: 1,
     titulo: '¿Quiénes somos?',
     color: 'var(--color-naranja)',
-    columnas: 3,
+    columnas: 1,
+    centrado: true,
+    alto: 300,
   },
   {
     id: 2,

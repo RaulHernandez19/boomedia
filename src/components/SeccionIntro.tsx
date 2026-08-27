@@ -1,29 +1,36 @@
 import { bloquesIntro, lema } from '../data/bloquesIntro'
 import BloqueIntro from './BloqueIntro'
+import Marca from './Marca'
 
 /**
- * La fila de arriba: "Quienes somos" ocupa 2 de 5 columnas y manda su propio
- * alto con `min-h-*`; "Que hacemos" y el lema van apilados en las otras 3.
- *
- * Van en columnas separadas (y no compartiendo filas) justo para que alargar
- * el naranja no estire tambien el rojo.
+ * La fila de arriba: "Quienes somos" y "Que hacemos" ocupan cada uno la
+ * mitad del ancho, pegados uno al otro (sin `gap`) y con el mismo alto
+ * (`min-h-96` en los dos). El logo va superpuesto encima de la fila
+ * entera, centrado sobre la union de los dos bloques, y no reserva su
+ * propio espacio (`absolute`).
  */
 export default function SeccionIntro() {
   const [quienesSomos, queHacemos] = bloquesIntro
 
   return (
-    <section className="grid gap-4 sm:grid-cols-5 sm:items-start">
-      <div className="flex min-h-96 sm:col-span-2">
-        <BloqueIntro bloque={quienesSomos} />
+    <section className="flex flex-col gap-2">
+      <div className="relative gap-2 grid sm:grid-cols-2">
+        <div className="flex min-h-96">
+          <BloqueIntro bloque={quienesSomos} />
+        </div>
+
+        <div className="flex min-h-96">
+          <BloqueIntro bloque={queHacemos} />
+        </div>
+
+        <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+          <Marca logo="/boomedia_logo.png" />
+        </div>
       </div>
 
-      <div className="flex flex-col gap-2 sm:col-span-3">
-        <BloqueIntro bloque={queHacemos} />
-
-        <p className="text-azul text-right text-2xl leading-tight font-extrabold">
-          {lema}
-        </p>
-      </div>
+      <p className="text-azul text-center text-3xl leading-tight font-extrabold">
+        {lema}
+      </p>
     </section>
   )
 }
