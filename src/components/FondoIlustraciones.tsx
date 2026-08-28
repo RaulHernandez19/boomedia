@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 /** Posicion y giro de cada cuadro decorativo. El tamaño es el mismo para los ocho. */
 const POSICIONES = [
   'left-[2%] top-[8%] -rotate-6',
@@ -13,11 +15,40 @@ const POSICIONES = [
 /** Las cuatro ilustraciones de fondo, repetidas para cubrir las ocho posiciones. */
 const FONDOS = ['/fondo1.png', '/fondo2.png', '/fondo3.png', '/fondo4.png']
 
+/** Que tan rapido se mueve el fondo al hacer scroll frente al contenido (1 = misma velocidad). */
+const VELOCIDAD_PARALLAX = 0.6
+
 /**
  * Fondo decorativo, a pantalla completa. Con `imagen` usa esa foto y la muestra
- * entera (`bg-contain`, sin recortar); sin ella deja los cuadros con fondo1-4.
+ * entera (`bg-contain`, sin recortar); sin ella deja los cuadros con fondo1-4,
+ * que se desplazan mas lento que el contenido al hacer scroll (efecto parallax).
  */
 export default function FondoIlustraciones({ imagen }: { imagen?: string }) {
+  const capaRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (imagen) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let frame = 0
+    const aplicarDesfase = () => {
+      if (capaRef.current) {
+        capaRef.current.style.transform = `translateY(${window.scrollY * (1 - VELOCIDAD_PARALLAX)}px)`
+      }
+    }
+    const onScroll = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(aplicarDesfase)
+    }
+
+    aplicarDesfase()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(frame)
+    }
+  }, [imagen])
+
   return (
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
       {imagen ? (
@@ -26,13 +57,15 @@ export default function FondoIlustraciones({ imagen }: { imagen?: string }) {
           style={{ backgroundImage: `url(${imagen})` }}
         />
       ) : (
-        POSICIONES.map((posicion, i) => (
-          <span
-            key={posicion}
-            className={`absolute size-10 bg-contain bg-center bg-no-repeat sm:size-28 ${posicion}`}
-            style={{ backgroundImage: `url(${FONDOS[i % FONDOS.length]})` }}
-          />
-        ))
+        <div ref={capaRef} className="absolute inset-0 will-change-transform">
+          {POSICIONES.map((posicion, i) => (
+            <span
+              key={posicion}
+              className={`absolute size-10 bg-contain bg-center bg-no-repeat sm:size-28 ${posicion}`}
+              style={{ backgroundImage: `url(${FONDOS[i % FONDOS.length]})` }}
+            />
+          ))}
+        </div>
       )}
     </div>
   )
