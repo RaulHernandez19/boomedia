@@ -12,7 +12,7 @@ export const bloquesIntro: BloqueIntro[] = [
     columnas: 1,
     centrado: true,
     alto: 300,
-    imagenes: ['/queSomos.png'],
+    imagenes: ['/queSomos.png', '/quesomos2.png'],
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const bloquesIntro: BloqueIntro[] = [
     columnas: 1,
     centrado: true,
     alto: 300,
-    imagenes: ['/queHacemos.png'],
+    imagenes: ['/queHacemos.png', '/quehacemos2.png'],
   },
 ]
 
