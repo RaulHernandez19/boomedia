@@ -16,11 +16,11 @@ export default function SeccionIntro() {
     <section className="flex flex-col gap-2">
       <div className="relative gap-2 grid sm:grid-cols-2">
         <div className="flex min-h-96">
-          <BloqueIntro bloque={quienesSomos} />
+          <BloqueIntro bloque={quienesSomos} lado="izquierda" />
         </div>
 
         <div className="flex min-h-96">
-          <BloqueIntro bloque={queHacemos} />
+          <BloqueIntro bloque={queHacemos} lado="derecha" />
         </div>
 
         <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">

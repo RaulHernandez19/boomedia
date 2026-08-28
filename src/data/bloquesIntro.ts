@@ -7,12 +7,12 @@ import type { BloqueIntro } from '../models/BloqueIntro'
 export const bloquesIntro: BloqueIntro[] = [
   {
     id: 1,
-    titulo: '¿Quiénes somos?',
+    titulo: 'Qué somos?',
     color: 'var(--color-naranja)',
     columnas: 1,
     centrado: true,
     alto: 300,
-    imagenes: ['/queSomos.jpeg'],
+    imagenes: ['/queSomos.png'],
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const bloquesIntro: BloqueIntro[] = [
     columnas: 1,
     centrado: true,
     alto: 300,
-    imagenes: ['/queHacemos.jpeg'],
+    imagenes: ['/queHacemos.png'],
   },
 ]
 
