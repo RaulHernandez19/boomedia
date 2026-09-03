@@ -49,16 +49,34 @@ export default function BloqueIntro({
       />
 
       {bloque.imagenes?.[1] && (
-        <img
-          src={bloque.imagenes[1]}
-          alt=""
-          className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ease-out ${
-            activo ? 'opacity-100' : 'opacity-0'
-          }`}
-        />
+        <>
+          {bloque.imagenActivaMovil && (
+            <img
+              src={bloque.imagenActivaMovil}
+              alt=""
+              className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ease-out sm:hidden ${
+                activo ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          )}
+
+          <img
+            src={bloque.imagenes[1]}
+            alt=""
+            className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ease-out ${
+              bloque.imagenActivaMovil ? 'hidden sm:block' : ''
+            } ${activo ? 'opacity-100' : 'opacity-0'}`}
+          />
+        </>
       )}
 
       <div className="absolute inset-0 bg-black/15 transition-opacity duration-700 ease-out group-hover:opacity-0" />
+
+      <div
+        className={`absolute inset-0 bg-black/1 transition-opacity duration-700 ease-out ${
+          activo ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
 
       <h2
         className={`absolute inset-0 m-0 flex items-center justify-center px-4 text-center text-5xl font-black text-white transition-opacity duration-700 ease-out ${
@@ -72,6 +90,28 @@ export default function BloqueIntro({
       >
         {bloque.titulo}
       </h2>
+
+      {bloque.contenido && (
+        <div
+          className={`absolute inset-0 flex items-center justify-center px-6 pt-10 pb-4 text-center transition-opacity delay-200 duration-700 ease-out sm:px-10 sm:pt-24 ${
+            lado === 'derecha'
+              ? 'sm:justify-end sm:pl-28 sm:text-right'
+              : 'sm:justify-start sm:pr-28 sm:text-left'
+          } ${activo ? 'opacity-100' : 'opacity-0'}`}
+        >
+          {Array.isArray(bloque.contenido) ? (
+            <ul className="space-y-2 text-base font-bold text-white sm:text-xl">
+              {bloque.contenido.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-base leading-snug font-bold text-white sm:text-xl">
+              {bloque.contenido}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   )
 }

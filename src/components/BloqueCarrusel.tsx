@@ -16,10 +16,19 @@ const largo = (n: number) =>
 
 export default function BloqueCarrusel({ bloque }: { bloque: bloqueCarrusel }) {
   const n = bloque.largo_bloques || 1
+  const abrirDoc = () => window.open(bloque.doc_link, '_blank', 'noopener,noreferrer')
 
   return (
     <li
-      className="group relative shrink-0 overflow-hidden"
+      role={bloque.doc_link ? 'button' : undefined}
+      tabIndex={bloque.doc_link ? 0 : undefined}
+      onClick={bloque.doc_link ? abrirDoc : undefined}
+      onKeyDown={
+        bloque.doc_link
+          ? (e) => (e.key === 'Enter' || e.key === ' ') && abrirDoc()
+          : undefined
+      }
+      className={`group relative shrink-0 overflow-hidden ${bloque.doc_link ? 'cursor-pointer' : ''}`}
       style={{
         width: largo(n),
         height: `calc(var(--u, 12rem) * ${Math.min(n, 1)})`,
